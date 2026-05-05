@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Randevu Al - Güliz Kuaför</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <img src="logo.png" alt="Güliz Kuaför">
+    <h2>Güliz Kuaför</h2>
+  </div>
+
+  <nav class="menu">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="calismalar.html">Çalışmalarımız</a>
+  </nav>
+</header>
+
+<section class="randevu">
+  <h1>Randevu Al</h1>
+
+<p>Bilgilerinizi doldurun, WhatsApp üzerinden randevunuzu gönderin.</p>
+
+<p class="randevu-uyari">
+  Randevunuz WhatsApp üzerinden tarafımıza iletilir. Saat uygunluğu kontrol edildikten sonra <strong> onay </strong> verilir.
+</p>
+
+<form class="randevu-form" onsubmit="randevuGonder(event)">
+    <input type="text" id="ad" placeholder="Adınız Soyadınız" required>
+    <input type="tel" id="telefon" placeholder="Telefon Numaranız" required>
+
+
+    <select id="hizmet" required>
+      <option value="">Hizmet Seçiniz</option>
+      <option>Saç Kesimi</option>
+      <option>Fön</option>
+      <option>Saç Boyama</option>
+      <option>Saç Bakımı</option>
+      <option>Özel Gün Hazırlığı</option>
+    </select>
+
+    <input type="date" id="tarih" required>
+    <input type="time" id="saat" required>
+
+    <textarea id="not" placeholder="Eklemek istediğiniz not"></textarea>
+
+    <button type="submit">WhatsApp ile Randevu Gönder</button>
+  </form>
+  <br>
+  <a href="https://wa.me/905376850394?text=Merhaba,%20randevumu%20iptal%20etmek%20istiyorum.%20Ad%20Soyad:%20"
+   target="_blank" 
+   class="btn secondary">
+   Randevu İptal Et
+</a>
+
+</section>
+
+
+<footer class="footer">
+  <p>© 2026 Güliz Kuaför</p>
+</footer>
+
+<script>
+function randevuGonder(event) {
+  event.preventDefault();
+
+  const ad = document.getElementById("ad").value;
+  const telefon = document.getElementById("telefon").value;
+  const hizmet = document.getElementById("hizmet").value;
+  const tarih = document.getElementById("tarih").value;
+  const saat = document.getElementById("saat").value;
+  const not = document.getElementById("not").value;
+
+  const mesaj =
+    `Merhaba, randevu almak istiyorum.%0A%0A` +
+    `Ad Soyad: ${ad}%0A` +
+    `Telefon: ${telefon}%0A` +
+    `Hizmet: ${hizmet}%0A` +
+    `Tarih: ${tarih}%0A` +
+    `Saat: ${saat}%0A` +
+    `Not: ${not}`;
+
+  window.open(`https://wa.me/905376850394?text=${mesaj}`, "_blank");
+}
+</script>
+
+</body>
+</html>
